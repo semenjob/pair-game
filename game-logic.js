@@ -21,7 +21,10 @@ const createMemoryCard = (id, front, back) => {
 };
 
 const toggleFlip = (card) => {
-  card.classList.toggle("flip");
+  if (card !== null) {
+    card.classList.toggle("flip");
+  }
+  return;
 };
 
 const initMemoryCardIndexes = (n) => {
@@ -47,10 +50,13 @@ function startGame() {
     );
     cards.append(card);
   }
+
   let firstCards = null;
 
-  cards.addEventListener("click", (event) => {
-    const selectedCard = event.target.closest(".memory_card");
+  cards.addEventListener("click", ({ target }) => {
+    const selectedCard = target.closest(".memory_card");
+
+    if (!selectedCard) return;
     toggleFlip(selectedCard);
 
     if (!firstCards) {
@@ -65,13 +71,13 @@ function startGame() {
 
     if (!isEqual) {
       setTimeout(() => {
-        toggleFlip(firstCards);
         toggleFlip(secondCards);
+        toggleFlip(firstCards);
         firstCards = null;
       }, 500);
     } else {
-      firstCards.classList.add("fix");
-      secondCards.classList.add("fix");
+      secondCards.classList.add("flip");
+      firstCards.classList.add("flip");
       firstCards = null;
     }
   }

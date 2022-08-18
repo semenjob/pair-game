@@ -1,18 +1,20 @@
 .game_container {
   display: block;
-  width: 840px;
+  width: 700px;
   margin: 0 auto;
 }
 
 .memory_cards {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 200px);
+  justify-content: center;
 }
 
 .memory_card {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   border: 1px solid rgb(218, 208, 208);
   border-radius: 6px;
   cursor: pointer;
@@ -20,13 +22,13 @@
 }
 
 .memory_card .front-view {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
 }
 
 .memory_card .back-view {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
 }
 
 .memory_card .front-view > img {
