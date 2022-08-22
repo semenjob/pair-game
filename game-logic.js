@@ -60,7 +60,6 @@ function startGame() {
   const cardBlocked = document.querySelectorAll(".memory_card");
 
   const removeClassBlock = () => {
-    titleGame.style.display = "none";
     cardBlocked.forEach((card) => {
       card.classList.remove("block");
     });
@@ -114,5 +113,6 @@ function startGame() {
     const cards = document.querySelector(".memory_cards");
     cards.innerHTML = null;
     startGame();
+    removeClassBlock();
   };
 }
