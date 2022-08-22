@@ -69,6 +69,7 @@ function startGame() {
     if (target) removeClassBlock();
   });
 
+  let winGame = 0;
   class PairCards {
     constructor() {
       this.cards = [];
@@ -84,10 +85,12 @@ function startGame() {
 
     check() {
       const cardId = this.cards[0].dataset.cardId;
+      console.log(winGame);
       const isEqual = this.cards.every(
         (card) => card.dataset.cardId === cardId
       );
       if (isEqual) {
+        winGame += 1;
         removeClassBlock();
         this.cards = [];
       }
@@ -119,10 +122,9 @@ function startGame() {
       const isEquel = pair.check();
       if (!isEquel) pair.reset();
     }
+    if (winGame === cardsLength) {
+      alert("You win");
+    }
   };
   cards.addEventListener("click", processClickOnCard);
-
-  if (winGame === cardsLength) {
-    alert("You win");
-  }
 }
