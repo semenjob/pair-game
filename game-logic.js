@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 const startGameBtn = document.querySelector(".start");
 const titleGame = document.querySelector(".start_game");
+const resetGame = document.querySelector(".reset");
 
 const toggleFlip = (card) => {
   if (card !== null) {
@@ -64,6 +65,7 @@ function startGame() {
       card.classList.remove("block");
     });
   };
+
   startGameBtn.addEventListener("click", (event) => {
     const target = event.target;
     if (target) removeClassBlock();
@@ -103,4 +105,14 @@ function startGame() {
       alert("You win");
     }
   }
+
+  resetGame.addEventListener("click", () => {
+    reset();
+  });
+
+  const reset = () => {
+    const cards = document.querySelector(".memory_cards");
+    cards.innerHTML = null;
+    startGame();
+  };
 }
